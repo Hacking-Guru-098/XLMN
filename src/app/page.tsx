@@ -7,7 +7,6 @@ import { SolutionSystem } from "@/components/sections/SolutionSystem";
 import { ProofWall } from "@/components/sections/ProofWall";
 import { DeliverablesBreakdown } from "@/components/sections/DeliverablesBreakdown";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { BookingModal } from "@/components/ui/BookingModal";
 
@@ -43,13 +42,10 @@ export default function Home() {
 
         {/* 4. FAQ (4 High-Signal Questions) */}
         <FaqSection />
-
-        {/* 5. Dark Final CTA Banner */}
-        <FinalCta onBookCall={handleOpenBooking} />
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Full-Bleed Dark Footer (Ready to talk? + Editorial Footer) */}
+      <Footer onBookCall={handleOpenBooking} />
 
       {/* Interactive Booking Modal */}
       <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
