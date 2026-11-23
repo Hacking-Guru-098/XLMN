@@ -11,7 +11,7 @@ interface HeroProps {
 
 export const Hero = ({ onBookCall }: HeroProps) => {
   return (
-    <section className="relative pt-24 pb-0 sm:pt-36 sm:pb-0 bg-white overflow-x-clip">
+    <section className="relative pt-10 pb-0 sm:pt-16 sm:pb-0 bg-white overflow-x-clip">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-6 lg:px-10">
         {/* Two-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">

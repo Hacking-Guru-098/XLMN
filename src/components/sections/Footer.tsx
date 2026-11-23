@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { motion } from "motion/react";
 
 interface FooterProps {
@@ -9,8 +10,6 @@ interface FooterProps {
 }
 
 export const Footer = ({ onBookCall }: FooterProps) => {
-  const [showCookieNotice, setShowCookieNotice] = useState(false);
-
   return (
     <footer className="w-full bg-[#000000] text-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -31,7 +30,7 @@ export const Footer = ({ onBookCall }: FooterProps) => {
         <div className="w-full border-t border-[#262626]" />
 
         {/* Hero CTA Block: "Ready to talk?" + "Book an intro call →" */}
-        <div className="pt-16 sm:pt-24 pb-24 sm:pb-36">
+        <div className="pt-16 sm:pt-24 pb-20 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,17 +54,17 @@ export const Footer = ({ onBookCall }: FooterProps) => {
           </motion.div>
         </div>
 
-        {/* 5-Column Editorial Footer Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 lg:gap-12 pb-24">
-          {/* Column 0: Brand Logo & Tagline */}
-          <div className="col-span-2 md:col-span-1 space-y-4 pr-4">
+        {/* Editorial Footer Grid (Only Present Items) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-20">
+          {/* Brand Column (Left) */}
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4 pr-6">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-black tracking-tight text-white">
                 XLMN<span className="text-[#888888]">.</span>
               </span>
             </Link>
-            <p className="text-sm text-[#888888] leading-relaxed max-w-[220px]">
-              The founder ghostwriting consultancy for founders and executives.
+            <p className="text-sm text-[#888888] leading-relaxed max-w-sm">
+              The founder ghostwriting consultancy for founders and executives. Turn your real thinking into compounding distribution and inbound pipeline.
             </p>
           </div>
 
@@ -74,167 +73,105 @@ export const Footer = ({ onBookCall }: FooterProps) => {
             <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
               CONSULTING
             </h3>
-            <ul className="space-y-3.5 text-sm text-[#999999]">
+            <ul className="space-y-3 text-sm text-[#999999]">
               <li>
                 <Link href="#how-it-works" className="hover:text-white transition-colors duration-150">
                   How it works
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className="hover:text-white transition-colors duration-150">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={onBookCall}
-                  className="hover:text-white transition-colors duration-150 text-left cursor-pointer"
-                >
-                  Book intro
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 2: PLATFORM */}
-          <div className="space-y-4">
-            <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
-              PLATFORM
-            </h3>
-            <ul className="space-y-3.5 text-sm text-[#999999]">
-              <li>
-                <Link href="#deliverables" className="hover:text-white transition-colors duration-150">
-                  Calendar
+                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
+                  The Receipts
                 </Link>
               </li>
               <li>
                 <Link href="#deliverables" className="hover:text-white transition-colors duration-150">
-                  Approvals
-                </Link>
-              </li>
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  Analytics
-                </Link>
-              </li>
-              <li>
-                <Link href="#deliverables" className="hover:text-white transition-colors duration-150">
-                  Engagement
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={onBookCall}
-                  className="hover:text-white transition-colors duration-150 text-left cursor-pointer"
-                >
-                  Request access
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: RESOURCES */}
-          <div className="space-y-4">
-            <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
-              RESOURCES
-            </h3>
-            <ul className="space-y-3.5 text-sm text-[#999999]">
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="#how-it-works" className="hover:text-white transition-colors duration-150">
-                  Manifesto
-                </Link>
-              </li>
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  Free tools
-                </Link>
-              </li>
-              <li>
-                <Link href="#deliverables" className="hover:text-white transition-colors duration-150">
-                  Compare tools
-                </Link>
-              </li>
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  XLMN vs Taplio
-                </Link>
-              </li>
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  XLMN vs Buffer
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: COMPANY */}
-          <div className="space-y-4">
-            <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
-              COMPANY
-            </h3>
-            <ul className="space-y-3.5 text-sm text-[#999999]">
-              <li>
-                <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  Customers
+                  Deliverables
                 </Link>
               </li>
               <li>
                 <Link href="#faq" className="hover:text-white transition-colors duration-150">
-                  Careers
+                  FAQ
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Column 2: GET STARTED */}
+          <div className="space-y-4">
+            <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
+              GET STARTED
+            </h3>
+            <ul className="space-y-3 text-sm text-[#999999]">
               <li>
-                <a
-                  href="mailto:hello@xlmn.agency"
-                  className="hover:text-white transition-colors duration-150"
+                <button
+                  onClick={onBookCall}
+                  className="hover:text-white transition-colors duration-150 text-left cursor-pointer"
                 >
-                  Contact
-                </a>
+                  Book an intro call ↗
+                </button>
               </li>
               <li>
                 <button
                   onClick={onBookCall}
                   className="hover:text-white transition-colors duration-150 text-left cursor-pointer"
                 >
-                  Sign in
+                  Free profile audit
                 </button>
               </li>
+            </ul>
+          </div>
+
+          {/* Column 3: CONNECT */}
+          <div className="space-y-4">
+            <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
+              CONNECT
+            </h3>
+            <ul className="space-y-3 text-sm text-[#999999]">
               <li>
-                <Link href="#how-it-works" className="hover:text-white transition-colors duration-150">
-                  About
-                </Link>
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
+                >
+                  <span>X (Twitter)</span>
+                  <ArrowUpRight className="h-3 w-3 text-[#737373]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
+                >
+                  <span>LinkedIn</span>
+                  <ArrowUpRight className="h-3 w-3 text-[#737373]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@xlmn.agency"
+                  className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5 font-mono-rethoric text-xs"
+                >
+                  <span>hello@xlmn.agency</span>
+                  <Mail className="h-3 w-3 text-[#737373]" />
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar: Cookie Settings Pill + Copyright */}
+        {/* Bottom Bar: Copyright & Principles */}
         <div className="py-8 border-t border-[#1a1a1a] flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono-rethoric text-[#666666] gap-4">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setShowCookieNotice(!showCookieNotice)}
-              className="bg-white text-black px-3 py-1.5 rounded-sm text-[11px] font-sans font-medium hover:bg-neutral-200 transition-colors cursor-pointer shadow-xs"
-            >
-              Cookie settings
-            </button>
-            {showCookieNotice && (
-              <span className="text-[11px] text-[#888888] animate-in fade-in duration-200">
-                Only essential cookies used. No third-party trackers.
-              </span>
-            )}
-          </div>
-
+          <p>© 2026 XLMN. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[#666666]">
-            <span>© 2026 XLMN. All rights reserved.</span>
-            <span>·</span>
             <span>Strict NDA Guaranteed</span>
             <span>·</span>
             <span>Zero AI Slop</span>
+            <span>·</span>
+            <span>Founder-Led Distribution</span>
           </div>
         </div>
       </div>

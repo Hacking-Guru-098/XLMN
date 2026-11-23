@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -10,32 +10,17 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ onBookCall }: NavbarProps) => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navLinks = [
-    { label: "Product", href: "#deliverables" },
     { label: "How it Works", href: "#how-it-works" },
     { label: "Results", href: "#receipts" },
+    { label: "Deliverables", href: "#deliverables" },
     { label: "FAQ", href: "#faq" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200 border-b ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md border-[#e5e5e5] py-3.5 shadow-xs"
-          : "bg-white/90 backdrop-blur-md border-[#e5e5e5]/60 py-4 sm:py-5"
-      }`}
-    >
+    <header className="relative w-full border-b border-[#e5e5e5] bg-white py-4 sm:py-5">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Exact Logo: XLMN. */}
         <Link href="/" className="group flex items-center">
@@ -44,7 +29,7 @@ export const Navbar = ({ onBookCall }: NavbarProps) => {
           </span>
         </Link>
 
-        {/* Center Nav Links: Product · How it Works · Results · FAQ */}
+        {/* Center Nav Links: How it Works · Results · Deliverables · FAQ */}
         <nav className="hidden md:flex items-center gap-7 lg:gap-9">
           {navLinks.map((link) => (
             <Link
@@ -57,15 +42,8 @@ export const Navbar = ({ onBookCall }: NavbarProps) => {
           ))}
         </nav>
 
-        {/* Right CTA Actions: Log in + Book a Call ↗ */}
-        <div className="hidden sm:flex items-center gap-5">
-          <button
-            onClick={onBookCall}
-            className="text-[14px] font-medium text-[#4a4a4a] hover:text-[#0a0a0a] transition-colors cursor-pointer"
-          >
-            Log in
-          </button>
-
+        {/* Right CTA Action: Book a Call ↗ (No Login) */}
+        <div className="hidden sm:flex items-center">
           <motion.button
             onClick={onBookCall}
             whileHover={{ scale: 1.03 }}
@@ -108,14 +86,14 @@ export const Navbar = ({ onBookCall }: NavbarProps) => {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown with Smooth Height Animation */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="md:hidden border-t border-[#e5e5e5] bg-white overflow-hidden px-6 py-5 shadow-lg"
           >
             <div className="flex flex-col space-y-4">
@@ -129,7 +107,7 @@ export const Navbar = ({ onBookCall }: NavbarProps) => {
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-2 flex flex-col gap-2">
+              <div className="pt-2">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
