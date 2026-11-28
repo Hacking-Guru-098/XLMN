@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "motion/react";
 
 interface FooterProps {
@@ -22,7 +22,7 @@ export const Footer = ({ onBookCall }: FooterProps) => {
             transition={{ duration: 0.5 }}
             className="text-[11px] sm:text-xs font-mono-rethoric text-[#888888] uppercase tracking-[0.22em] font-medium"
           >
-            -&gt; JOIN XLMN
+            → WORK WITH XLMN
           </motion.div>
         </div>
 
@@ -64,14 +64,14 @@ export const Footer = ({ onBookCall }: FooterProps) => {
               </span>
             </Link>
             <p className="text-sm text-[#888888] leading-relaxed max-w-sm">
-              The founder ghostwriting consultancy for founders and executives. Turn your real thinking into compounding distribution and inbound pipeline.
+              Ghostwriting for founders and executives on LinkedIn and X. We turn how you think into posts that build reach and bring in pipeline.
             </p>
           </div>
 
           {/* Column 1: CONSULTING */}
           <div className="space-y-4">
             <h3 className="text-[11px] font-mono-rethoric uppercase tracking-[0.2em] text-[#737373] font-medium">
-              CONSULTING
+              EXPLORE
             </h3>
             <ul className="space-y-3 text-sm text-[#999999]">
               <li>
@@ -81,7 +81,7 @@ export const Footer = ({ onBookCall }: FooterProps) => {
               </li>
               <li>
                 <Link href="#receipts" className="hover:text-white transition-colors duration-150">
-                  The Receipts
+                  Results
                 </Link>
               </li>
               <li>
@@ -130,28 +130,6 @@ export const Footer = ({ onBookCall }: FooterProps) => {
             <ul className="space-y-3 text-sm text-[#999999]">
               <li>
                 <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
-                >
-                  <span>X (Twitter)</span>
-                  <ArrowUpRight className="h-3 w-3 text-[#737373]" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5"
-                >
-                  <span>LinkedIn</span>
-                  <ArrowUpRight className="h-3 w-3 text-[#737373]" />
-                </a>
-              </li>
-              <li>
-                <a
                   href="mailto:hello@xlmn.agency"
                   className="hover:text-white transition-colors duration-150 inline-flex items-center gap-1.5 font-mono-rethoric text-xs"
                 >
@@ -167,11 +145,11 @@ export const Footer = ({ onBookCall }: FooterProps) => {
         <div className="py-8 border-t border-[#1a1a1a] flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono-rethoric text-[#666666] gap-4">
           <p>© 2026 XLMN. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[#666666]">
-            <span>Strict NDA Guaranteed</span>
+            <span>NDA on request</span>
             <span>·</span>
-            <span>Zero AI Slop</span>
+            <span>Written by humans</span>
             <span>·</span>
-            <span>Founder-Led Distribution</span>
+            <span>You approve every post</span>
           </div>
         </div>
       </div>

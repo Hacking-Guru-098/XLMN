@@ -2,7 +2,7 @@
 
 Founder Ghostwriting for X & LinkedIn.
 
-Turn your founder insights into daily X & LinkedIn pipeline—in 60 minutes a month. Built with Next.js 16, React 19, Tailwind CSS v4, Lenis smooth scrolling, and Motion.
+Ghostwriting for B2B and tech founders on LinkedIn and X. One call a month. We write, you approve. Built with Next.js 16, React 19, Tailwind CSS v4, Lenis smooth scrolling, and Motion.
 
 ## Tech Stack
 - **Framework:** Next.js 16 (App Router)

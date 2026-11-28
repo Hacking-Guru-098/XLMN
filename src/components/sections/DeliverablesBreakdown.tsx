@@ -14,14 +14,14 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
     "5–7 short-form posts per week tailored to your niche",
     "1–2 deep-dive threads or teardown posts per week",
     "Profile bio, banner direction, and pinned post optimization",
-    "Daily reply strategy & weekly performance analytics",
+    "Daily reply plan and a weekly performance report",
   ];
 
   const linkedinDeliverables = [
     "4–5 founder-led posts per week (stories, frameworks, teardowns)",
-    "Zero cringe formatting—clean, scannable executive copy",
+    "Clean, readable posts. No broetry, no engagement bait",
     "Full profile funnel overhaul (headline, About, Featured CTA)",
-    "Comment & engagement playbook + monthly strategy sync",
+    "Comment playbook and a monthly strategy call",
   ];
 
   return (
@@ -35,7 +35,7 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
           className="max-w-3xl mx-auto text-center space-y-3"
         >
           <div className="inline-flex items-center gap-2 border border-[#e5e5e5] bg-[#f8f8f8] rounded-full px-4 py-1 text-xs font-mono-rethoric font-medium text-[#0a0a0a]">
-            <span>WHAT YOU GET // DELIVERABLES</span>
+            <span>WHAT YOU GET</span>
           </div>
 
           <h2 className="text-2xl sm:text-5xl font-extrabold tracking-[-0.03em] text-[#0a0a0a] leading-tight">
@@ -43,7 +43,7 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
           </h2>
 
           <p className="text-sm sm:text-lg text-[#555555]">
-            Engineered to dominate both real-time tech discourse on X and executive decision-maker feeds on LinkedIn.
+            Short, sharp posts on X to reach founders and tech buyers. Considered, longer posts on LinkedIn to reach the people who sign deals.
           </p>
         </motion.div>
 
@@ -69,18 +69,18 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
                       X (Twitter)
                     </h3>
                     <span className="text-xs text-[#888888] font-mono-rethoric">
-                      High-Velocity Engine
+                      Reach &amp; conversation
                     </span>
                   </div>
                 </div>
 
                 <span className="rounded-full bg-[#f4f4f4] border border-[#e5e5e5] px-3 py-0.5 text-xs font-mono-rethoric font-semibold text-[#0a0a0a]">
-                  Daily Velocity
+                  Daily posting
                 </span>
               </div>
 
               <p className="text-sm font-medium text-[#333333]">
-                Speed, sharp takes, and high-signal network effects.
+                Sharp takes, fast replies, and a network that grows every week.
               </p>
 
               <div className="space-y-3 pt-1">
@@ -98,8 +98,14 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
             </div>
 
             <div className="mt-8 pt-5 border-t border-[#f0f0f0] flex items-center justify-between text-xs font-mono-rethoric text-[#888888]">
-              <span>Velocity into founders &amp; tech buyers</span>
-              <span className="text-[#0a0a0a] font-semibold">Active Tier →</span>
+              <span>Best for reaching founders &amp; tech buyers</span>
+              <button
+                type="button"
+                onClick={onBookCall}
+                className="text-[#0a0a0a] font-semibold hover:underline cursor-pointer shrink-0"
+              >
+                Start with X →
+              </button>
             </div>
           </motion.div>
 
@@ -123,18 +129,18 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
                       LinkedIn
                     </h3>
                     <span className="text-xs text-[#888888] font-mono-rethoric">
-                      High-Ticket Conversion
+                      Authority &amp; inbound
                     </span>
                   </div>
                 </div>
 
                 <span className="rounded-full bg-[#f4f4f4] border border-[#e5e5e5] px-3 py-0.5 text-xs font-mono-rethoric font-semibold text-[#0a0a0a]">
-                  Enterprise ICP
+                  4–5 posts a week
                 </span>
               </div>
 
               <p className="text-sm font-medium text-[#333333]">
-                Authority, buyer trust, and warm inbound deal flow.
+                Authority, buyer trust, and warm inbound conversations.
               </p>
 
               <div className="space-y-3 pt-1">
@@ -152,13 +158,19 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
             </div>
 
             <div className="mt-8 pt-5 border-t border-[#f0f0f0] flex items-center justify-between text-xs font-mono-rethoric text-[#888888]">
-              <span>Authority into VP &amp; CXO deals</span>
-              <span className="text-[#0a0a0a] font-semibold">Active Tier →</span>
+              <span>Best for reaching decision-makers</span>
+              <button
+                type="button"
+                onClick={onBookCall}
+                className="text-[#0a0a0a] font-semibold hover:underline cursor-pointer shrink-0"
+              >
+                Start with LinkedIn →
+              </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Review Workspace Notice */}
+        {/* Review Workspace Notice (included with both platforms) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -172,10 +184,10 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
             </div>
             <div>
               <div className="font-semibold text-[#0a0a0a] text-xs sm:text-sm">
-                Shared Slack or Notion approval workspace
+                Included with both: a shared Slack or Notion workspace
               </div>
               <p className="text-xs text-[#666666]">
-                Review, comment, or hit approve in under 10 minutes a week.
+                Review, comment on, or approve drafts in about 10 minutes a week.
               </p>
             </div>
           </div>
@@ -186,7 +198,7 @@ export const DeliverablesBreakdown = ({ onBookCall }: DeliverablesBreakdownProps
             whileTap={{ scale: 0.97 }}
             className="btn-rethoric-primary w-full sm:w-auto px-4 py-2.5 text-xs font-medium shrink-0 cursor-pointer"
           >
-            <span>Book Strategy Call</span>
+            <span>Book an intro call</span>
             <ArrowRight className="h-3 w-3" />
           </motion.button>
         </motion.div>

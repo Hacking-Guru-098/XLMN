@@ -18,7 +18,7 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "XLMN | Founder Ghostwriting for X & LinkedIn",
   description:
-    "Turn your founder insights into daily X & LinkedIn pipeline—in 60 minutes a month. 100% human-written for B2B & Tech founders.",
+    "Ghostwriting for B2B and tech founders on LinkedIn and X. One call a month, posts written by humans in your voice, and you approve every one.",
   keywords: [
     "founder ghostwriting",
     "B2B founder content",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "XLMN | Founder Ghostwriting for X & LinkedIn",
     description:
-      "Turn your founder insights into daily X & LinkedIn pipeline—in 60 minutes a month.",
+      "Ghostwriting for B2B and tech founders on LinkedIn and X. One call a month. We write, you approve.",
     type: "website",
   },
 };

@@ -13,7 +13,7 @@ export const Navbar = ({ onBookCall }: NavbarProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "How it Works", href: "#how-it-works" },
+    { label: "How it works", href: "#how-it-works" },
     { label: "Results", href: "#receipts" },
     { label: "Deliverables", href: "#deliverables" },
     { label: "FAQ", href: "#faq" },

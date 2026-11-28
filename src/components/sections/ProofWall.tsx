@@ -11,146 +11,88 @@ export interface ProofItem {
   metric: string;
 }
 
+// One card per real screenshot. Near-duplicate captures of the same chart
+// (proof-02 to proof-13, proof-18) are left out so every card shows a different result.
 export const proofResults: ProofItem[] = [
   {
     id: 1,
     image: "/results/proof-01.PNG",
-    metric: "201,439 impressions · 28-day cadence",
+    metric: "201,439 impressions in 28 days · up 227%",
   },
   {
     id: 2,
     image: "/results/proof-19.jpg",
-    metric: "194,985 impressions · 122K reached",
+    metric: "194,985 impressions · 122K members reached",
   },
   {
     id: 3,
     image: "/results/proof-17.jpg",
-    metric: "167,481 impressions · SaaS Breakdown",
+    metric: "167,481 impressions · 4,071 link clicks",
   },
   {
     id: 4,
     image: "/results/proof-16.jpg",
-    metric: "140,493 impressions · Viral Teardown",
+    metric: "140,493 impressions · 241 new followers",
   },
   {
     id: 5,
     image: "/results/proof-14.PNG",
-    metric: "5,347 social engagements · VP Buyers",
+    metric: "5,347 engagements · 124 link clicks",
   },
   {
     id: 6,
     image: "/results/proof-24.jpg",
-    metric: "99,602 impressions · 61K reached",
+    metric: "99,602 impressions · 61.6K members reached",
   },
   {
     id: 7,
-    image: "/results/proof-23.jpg",
-    metric: "85,428 impressions · Technical Breakdown",
+    image: "/results/proof-27.jpg",
+    metric: "Audience · 26% senior, 8% founders",
   },
   {
     id: 8,
+    image: "/results/proof-23.jpg",
+    metric: "85,428 impressions · 1,108 profile views",
+  },
+  {
+    id: 9,
     image: "/results/proof-26.jpg",
     metric: "68,139 impressions · 27.5K video views",
   },
   {
-    id: 9,
-    image: "/results/proof-05.jpg",
-    metric: "61,044 impressions · Category Pillar",
-  },
-  {
     id: 10,
-    image: "/results/proof-15.jpg",
-    metric: "574 engagements · Senior/C-suite buyers",
+    image: "/results/proof-05.jpg",
+    metric: "61,044 impressions in 7 days",
   },
   {
     id: 11,
-    image: "/results/proof-10.jpg",
-    metric: "61,100 impressions · Product Insight",
+    image: "/results/proof-22.jpg",
+    metric: "50,869 impressions · 33K members reached",
   },
   {
     id: 12,
-    image: "/results/proof-25.jpg",
-    metric: "31,031 impressions · 13.3K views",
+    image: "/results/proof-28.jpg",
+    metric: "Audience · 29% senior, 20% at 10,001+ companies",
   },
   {
     id: 13,
-    image: "/results/proof-22.jpg",
-    metric: "50,869 impressions · 33K reached",
+    image: "/results/proof-21.jpg",
+    metric: "41,974 impressions · 26.5K members reached",
   },
   {
     id: 14,
-    image: "/results/proof-27.jpg",
-    metric: "Top Demographics · 26% Senior Leadership",
+    image: "/results/proof-20.jpg",
+    metric: "41,773 impressions · 21K members reached",
   },
   {
     id: 15,
-    image: "/results/proof-02.jpg",
-    metric: "60,741 impressions · Executive Voice",
+    image: "/results/proof-25.jpg",
+    metric: "31,031 impressions · 13.4K video views",
   },
   {
     id: 16,
-    image: "/results/proof-18.jpg",
-    metric: "167,484 impressions · Architecture Post",
-  },
-  {
-    id: 17,
-    image: "/results/proof-21.jpg",
-    metric: "41,974 impressions · 26.5K reach",
-  },
-  {
-    id: 18,
-    image: "/results/proof-03.jpg",
-    metric: "60,773 impressions · High-signal cadence",
-  },
-  {
-    id: 19,
-    image: "/results/proof-28.jpg",
-    metric: "Audience ICP · 29% Senior CXO Buyers",
-  },
-  {
-    id: 20,
-    image: "/results/proof-04.jpg",
-    metric: "60,839 impressions · Tech Teardown",
-  },
-  {
-    id: 21,
-    image: "/results/proof-06.jpg",
-    metric: "61,057 impressions · Founder Story",
-  },
-  {
-    id: 22,
-    image: "/results/proof-20.jpg",
-    metric: "41,773 impressions · 21K tech reach",
-  },
-  {
-    id: 23,
-    image: "/results/proof-07.jpg",
-    metric: "61,072 impressions · Contrarian Take",
-  },
-  {
-    id: 24,
-    image: "/results/proof-08.jpg",
-    metric: "61,081 impressions · Customer Proof",
-  },
-  {
-    id: 25,
-    image: "/results/proof-09.jpg",
-    metric: "61,088 impressions · Inbound Pipeline",
-  },
-  {
-    id: 26,
-    image: "/results/proof-11.jpg",
-    metric: "61,109 impressions · Category Design",
-  },
-  {
-    id: 27,
-    image: "/results/proof-12.jpg",
-    metric: "61,117 impressions · Weekly Breakdown",
-  },
-  {
-    id: 28,
-    image: "/results/proof-13.jpg",
-    metric: "61,123 impressions · Compounding Trust",
+    image: "/results/proof-15.jpg",
+    metric: "574 engagements · 26% senior audience",
   },
 ];
 
@@ -209,7 +151,7 @@ export const ProofWall = () => {
               <span>THE RECEIPTS</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-[-0.03em] text-[#0a0a0a]">
-              Verified client results. Zero cherry-picking.
+              Real client analytics. Names hidden under NDA.
             </h2>
           </div>
 
@@ -250,7 +192,7 @@ export const ProofWall = () => {
         >
           <div className="animate-marquee-single flex gap-4 pl-4 sm:pl-8">
             {[...proofResults, ...proofResults].map((item, idx) => {
-              const originalIndex = item.id - 1;
+              const originalIndex = idx % proofResults.length;
               return (
                 <div
                   key={`single-${item.id}-${idx}`}
@@ -311,7 +253,7 @@ export const ProofWall = () => {
                 <div className="flex items-center gap-2.5">
                   <span className="rounded-full bg-[#0a0a0a] text-white px-3 py-0.5 text-xs font-mono-rethoric font-semibold flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#22c55e]" />
-                    Verified Client Metric
+                    Client analytics · name hidden
                   </span>
                   <span className="text-xs sm:text-sm font-semibold text-[#0a0a0a]">
                     {activeItem.metric}

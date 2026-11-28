@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, Play, Check } from "lucide-react";
+import { ArrowUpRight, ArrowDown, Check } from "lucide-react";
 import { motion } from "motion/react";
 
 interface HeroProps {
@@ -28,14 +28,14 @@ export const Hero = ({ onBookCall }: HeroProps) => {
               <span>FOUNDER CONTENT SYSTEM</span>
             </motion.div>
 
-            {/* Main Headline: "Your founder's brain." locked on first line */}
+            {/* Main Headline: "Your best ideas." locked on first line */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="text-3xl sm:text-5xl lg:text-[48px] xl:text-[55px] font-extrabold tracking-[-0.035em] text-[#0a0a0a] leading-[1.12] sm:leading-[1.08]"
             >
-              <span className="sm:whitespace-nowrap">Your founder’s brain.</span><br />
+              <span className="sm:whitespace-nowrap">Your best ideas.</span><br />
               <span className="sm:whitespace-nowrap">Your next growth</span><br />
               <span>channel.</span>
             </motion.h1>
@@ -47,7 +47,7 @@ export const Hero = ({ onBookCall }: HeroProps) => {
               transition={{ duration: 0.65, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-[460px] text-sm sm:text-base text-[#555555] leading-relaxed font-normal"
             >
-              We turn your real thoughts, voice notes and expertise into high-performing LinkedIn and X content that builds authority and creates pipeline — in just 60 minutes a month.
+              We turn your calls, voice notes and expertise into LinkedIn and X posts that build authority and bring in pipeline. You give us one call a month. We write, you approve.
             </motion.p>
 
             {/* Action Buttons */}
@@ -63,7 +63,7 @@ export const Hero = ({ onBookCall }: HeroProps) => {
                 whileTap={{ scale: 0.98 }}
                 className="btn-rethoric-primary w-full sm:w-auto px-6 py-3.5 text-sm font-semibold rounded-full inline-flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
               >
-                <span>Build my content engine</span>
+                <span>Book an intro call</span>
                 <ArrowUpRight className="h-4 w-4" />
               </motion.button>
 
@@ -74,7 +74,7 @@ export const Hero = ({ onBookCall }: HeroProps) => {
                 className="btn-rethoric-secondary w-full sm:w-auto px-5 py-3.5 text-sm font-semibold rounded-full inline-flex items-center justify-center gap-2 border border-[#e5e5e5] hover:bg-[#f4f4f4] cursor-pointer"
               >
                 <span>See how it works</span>
-                <Play className="h-3 w-3 fill-current text-[#0a0a0a]" />
+                <ArrowDown className="h-3.5 w-3.5 text-[#0a0a0a]" />
               </motion.a>
             </motion.div>
 
@@ -87,15 +87,15 @@ export const Hero = ({ onBookCall }: HeroProps) => {
             >
               <div className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-[#0a0a0a] stroke-[2.5]" />
-                <span>60 min/month</span>
+                <span>One call a month</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-[#0a0a0a] stroke-[2.5]" />
-                <span>Founder-led</span>
+                <span>Written by humans</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Check className="h-3.5 w-3.5 text-[#0a0a0a] stroke-[2.5]" />
-                <span>No ghostwriting guesswork</span>
+                <span>You approve every post</span>
               </div>
             </motion.div>
           </div>

@@ -32,7 +32,7 @@ export default function Home() {
         <Hero onBookCall={handleOpenBooking} />
 
         {/* 2. The Solution System (3-Step Capture -> Convert -> Publish & Grow) */}
-        <SolutionSystem onBookCall={handleOpenBooking} />
+        <SolutionSystem />
 
         {/* 3. Proof Wall (28 Scrollable Results + Lightbox) */}
         <ProofWall />

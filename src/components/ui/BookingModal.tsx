@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Calendar, Clock, CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
-import confetti from "canvas-confetti";
+import { X, Calendar, Clock, Mail, ArrowRight, ShieldCheck } from "lucide-react";
+
+// There is no booking backend yet, so a request is sent as a pre-filled email.
+// Swap this for a calendar link (Cal.com / Calendly) when one exists.
+const BOOKING_EMAIL = "hello@xlmn.agency";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -12,7 +15,7 @@ interface BookingModalProps {
 
 export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [selectedSlot, setSelectedSlot] = useState<string>("Tomorrow • 2:00 PM EST");
+  const [selectedSlot, setSelectedSlot] = useState<string>("Weekday • afternoon");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,31 +26,31 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const availableSlots = [
-    { label: "Tomorrow", time: "2:00 PM EST", popular: true },
-    { label: "Tomorrow", time: "4:30 PM EST", popular: false },
-    { label: "Thursday", time: "11:00 AM EST", popular: false },
-    { label: "Thursday", time: "3:15 PM EST", popular: true },
-    { label: "Friday", time: "1:00 PM EST", popular: false },
+    { label: "Weekday", time: "morning", popular: false },
+    { label: "Weekday", time: "afternoon", popular: true },
+    { label: "Weekday", time: "evening", popular: false },
+    { label: "Any time", time: "I'm flexible", popular: false },
   ];
+
+  const mailtoHref = () => {
+    const subject = `Intro call request: ${formData.name || "Founder"}${formData.company ? ` (${formData.company})` : ""}`;
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Company: ${formData.company}`,
+      `Profile: ${formData.handle}`,
+      `Main goal: ${formData.goal}`,
+      `Preferred time: ${selectedSlot} (please include your time zone)`,
+    ].join("\n");
+    return `mailto:${BOOKING_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setStep(3);
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ["#0a0a0a", "#22c55e", "#ff6600", "#555555"],
-        });
-      } catch {
-        // Safe fallback
-      }
-    }, 600);
+    window.location.href = mailtoHref();
+    setIsSubmitting(false);
+    setStep(3);
   };
 
   const handleReset = () => {
@@ -90,19 +93,19 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               <div className="space-y-6">
                 <div>
                   <div className="inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] bg-[#f8f8f8] px-3 py-1 text-xs font-mono-rethoric font-semibold text-[#0a0a0a]">
-                    20-MIN LIVE PROFILE AUDIT
+                    FREE 20-MIN PROFILE AUDIT
                   </div>
                   <h3 className="mt-3 text-2xl font-extrabold text-[#0a0a0a] tracking-tight">
-                    Book Your Strategy Call
+                    Book an intro call
                   </h3>
                   <p className="mt-1 text-sm text-[#555555]">
-                    We’ll audit your current X &amp; LinkedIn profiles live and map your first 30 days of distribution.
+                    We’ll review your X and LinkedIn profiles with you and map out your first 30 days of posts.
                   </p>
                 </div>
 
                 <div className="space-y-2.5">
                   <label className="text-xs font-mono-rethoric uppercase text-[#888888]">
-                    Select a 20-min strategy slot
+                    When suits you best?
                   </label>
                   <div className="grid gap-2">
                     {availableSlots.map((slot, idx) => {
@@ -129,7 +132,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                             <span className={`rounded-full px-2 py-0.5 text-[10px] font-mono-rethoric ${
                               isSelected ? "bg-white/20 text-white" : "bg-[#f4f4f4] text-[#0a0a0a]"
                             }`}>
-                              Recommended
+                              Most popular
                             </span>
                           )}
                         </button>
@@ -143,12 +146,12 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     onClick={() => setStep(2)}
                     className="btn-rethoric-primary w-full py-3.5 text-sm"
                   >
-                    Continue to Founder Details
+                    Continue
                     <ArrowRight className="h-4 w-4" />
                   </button>
                   <p className="mt-3 text-center text-xs font-mono-rethoric text-[#888888] flex items-center justify-center gap-1.5">
                     <ShieldCheck className="h-3.5 w-3.5 text-[#22c55e]" />
-                    Strict NDA guaranteed · Zero pitch decks required
+                    NDA on request · No prep needed
                   </p>
                 </div>
               </div>
@@ -163,23 +166,23 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     onClick={() => setStep(1)}
                     className="text-xs font-mono-rethoric text-[#0a0a0a] hover:underline mb-2 block"
                   >
-                    ← Back to slot selection ({selectedSlot})
+                    ← Back ({selectedSlot})
                   </button>
                   <h3 className="text-xl font-bold text-[#0a0a0a] tracking-tight">
-                    Confirm Your Founder Details
+                    A few details
                   </h3>
                   <p className="text-xs text-[#666666]">
-                    Only 3 new founders onboarded per month. Please provide your actual profiles so we can prepare your audit.
+                    Share the profile you want us to review so we can prepare before the call.
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs font-medium text-[#333333]">Your Full Name</label>
+                    <label className="text-xs font-medium text-[#333333]">Full name</label>
                     <input
                       required
                       type="text"
-                      placeholder="e.g. Marc Vance"
+                      placeholder="e.g. Priya Shah"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="mt-1 w-full rounded-xl border border-[#e5e5e5] bg-white px-3.5 py-2.5 text-sm text-[#0a0a0a] placeholder-zinc-400 focus:border-[#0a0a0a] focus:outline-none"
@@ -187,7 +190,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   </div>
 
                   <div>
-                    <label className="text-xs font-medium text-[#333333]">Work Email</label>
+                    <label className="text-xs font-medium text-[#333333]">Work email</label>
                     <input
                       required
                       type="email"
@@ -200,7 +203,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-medium text-[#333333]">Company Name</label>
+                      <label className="text-xs font-medium text-[#333333]">Company</label>
                       <input
                         required
                         type="text"
@@ -224,15 +227,15 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   </div>
 
                   <div>
-                    <label className="text-xs font-medium text-[#333333]">Primary Goal</label>
+                    <label className="text-xs font-medium text-[#333333]">Main goal</label>
                     <select
                       value={formData.goal}
                       onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
                       className="mt-1 w-full rounded-xl border border-[#e5e5e5] bg-white px-3.5 py-2.5 text-sm text-[#0a0a0a] focus:border-[#0a0a0a] focus:outline-none"
                     >
-                      <option value="Inbound Pipeline & DMs">Inbound Pipeline &amp; DMs (Sales)</option>
-                      <option value="Category Authority & Investor Network">Category Authority &amp; Investor Network</option>
-                      <option value="Top Tier Talent Recruiting">Top Tier Talent Recruiting</option>
+                      <option value="Inbound Pipeline & DMs">Inbound pipeline &amp; DMs (sales)</option>
+                      <option value="Category Authority & Investor Network">Category authority &amp; investor network</option>
+                      <option value="Top Tier Talent Recruiting">Hiring top talent</option>
                       <option value="All of the above">All of the above</option>
                     </select>
                   </div>
@@ -244,7 +247,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     disabled={isSubmitting}
                     className="btn-rethoric-primary w-full py-3.5 text-sm"
                   >
-                    {isSubmitting ? "Securing Strategy Slot..." : "Confirm & Book 20-Min Intro Call"}
+                    {isSubmitting ? "Opening your email..." : "Send request"}
                   </button>
                 </div>
               </form>
@@ -253,27 +256,32 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
             {/* Step 3: Success Screen */}
             {step === 3 && (
               <div className="text-center py-4 space-y-5">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-[#22c55e]">
-                  <CheckCircle2 className="h-7 w-7" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#f4f4f4] text-[#0a0a0a]">
+                  <Mail className="h-7 w-7" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-extrabold text-[#0a0a0a]">Call Confirmed</h3>
+                  <h3 className="text-2xl font-extrabold text-[#0a0a0a]">One last step</h3>
                   <p className="text-sm text-[#555555] max-w-sm mx-auto">
-                    We’ve reserved your slot for <span className="font-semibold text-[#0a0a0a]">{selectedSlot}</span>. A calendar invite has been sent to{" "}
-                    <span className="font-mono-rethoric font-semibold text-[#0a0a0a]">{formData.email || "your email"}</span>.
+                    Your email app should have opened with your details filled in. Hit send and we’ll reply within one business day to confirm a time.
+                  </p>
+                  <p className="text-xs text-[#888888] max-w-sm mx-auto">
+                    Nothing opened?{" "}
+                    <a href={mailtoHref()} className="font-mono-rethoric font-semibold text-[#0a0a0a] underline">
+                      Email {BOOKING_EMAIL}
+                    </a>
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-[#e5e5e5] bg-[#fafafa] p-4 text-left text-xs space-y-2">
                   <div className="font-semibold text-[#0a0a0a] flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-[#0a0a0a]" />
-                    What to expect on your 20-min audit:
+                    What happens on the call:
                   </div>
                   <ul className="list-disc list-inside space-y-1 text-[#555555] pl-1">
-                    <li>Live breakdown of your current X and LinkedIn positioning</li>
-                    <li>3 custom content hooks tailored to {formData.company || "your product"}</li>
-                    <li>Exact walkthrough of the 60-min/month extraction workflow</li>
+                    <li>A review of how your X and LinkedIn profiles come across today</li>
+                    <li>3 post ideas written for {formData.company || "your company"}</li>
+                    <li>A walkthrough of how the monthly call and weekly approvals work</li>
                   </ul>
                 </div>
 
@@ -281,7 +289,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   onClick={handleReset}
                   className="btn-rethoric-secondary w-full py-3 text-sm"
                 >
-                  Done · Return to Website
+                  Back to the site
                 </button>
               </div>
             )}

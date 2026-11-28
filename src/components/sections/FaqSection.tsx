@@ -12,22 +12,22 @@ export const FaqSection = () => {
     {
       question: "How much of my time does this actually take?",
       answer:
-        "About 60 minutes a month for our extraction call, plus 10 minutes a week to review and approve drafts in Slack or Notion. If you have a random thought between calls, drop us a 30-second voice note and we’ll turn it into a post.",
+        "One 60-minute call a month, plus about 10 minutes a week to review and approve drafts in Slack or Notion. If an idea hits between calls, send us a 30-second voice note and we’ll turn it into a post.",
     },
     {
       question: "How do you make sure it actually sounds like me?",
       answer:
-        "We don't guess your tone—we study it. We pull directly from your transcripts, past writing, Slack rants, and recorded calls to build a living Voice Guide. By week two, most founders approve 90%+ of drafts without edits.",
+        "We study it before we write a word. We build a voice guide from your call transcripts, past posts, Slack messages and recorded calls, and update it every time you edit a draft. Within the first few weeks, most drafts need little or no editing.",
     },
     {
       question: "Do you use AI to write the posts?",
       answer:
-        "No. Every post is researched, structured, and written by a human writer who understands B2B, tech, and how founders actually talk. Your audience can tell the difference immediately.",
+        "No. Every post is researched, structured and written by a human writer who knows B2B, tech, and how founders actually talk. Your audience can tell the difference.",
     },
     {
       question: "Is this confidential?",
       answer:
-        "100%. We sign strict NDAs on request and never publicly name clients or share unredacted work without explicit written permission.",
+        "Yes. We sign an NDA on request, and we never name clients or share their work without written permission. That’s why the results on this page have names hidden.",
     },
   ];
 
@@ -46,7 +46,7 @@ export const FaqSection = () => {
           className="text-center space-y-3"
         >
           <div className="inline-flex items-center gap-2 border border-[#e5e5e5] bg-white rounded-full px-4 py-1 text-xs font-mono-rethoric font-medium text-[#0a0a0a]">
-            <span>FAQ // FREQUENTLY ASKED QUESTIONS</span>
+            <span>FAQ</span>
           </div>
 
           <h2 className="text-2xl sm:text-5xl font-extrabold tracking-[-0.03em] text-[#0a0a0a] leading-tight">
@@ -54,7 +54,7 @@ export const FaqSection = () => {
           </h2>
 
           <p className="text-sm sm:text-lg text-[#555555]">
-            Everything you need to know about how XLMN turns founder thinking into pipeline.
+            What founders ask us before they start.
           </p>
         </motion.div>
 
